@@ -28,8 +28,6 @@ name = "臺大"
 youbike_dict = {'sna': [], 'mday': [],'total': [], 'available_rent_bikes': [], 'available_return_bikes': [], 'updateTime': []}
 for i in data:
       if i['sna'].find(name) >= 0:
-        # print(i['sna'],'\t',i['mday'],'\t',i['available_rent_bikes'])
-        # youbike_dict[i['sna']] = [i['mday'], i['available_rent_bikes']]
         youbike_dict['sna'].append(i['sna'])
         youbike_dict['mday'].append(i['mday'])
         youbike_dict['total'].append(i['total'])
@@ -40,8 +38,6 @@ for i in data:
 
 pf = pd.DataFrame(youbike_dict)
 writer = pd.ExcelWriter('youbike_cronjob2.xlsx', engine='openpyxl')
-# book = openpyxl.load_workbook(writer)
-# writer.wb = wb
 pf.to_excel(excel_writer=writer, sheet_name='sheet2')
 writer.close()
 
@@ -52,15 +48,5 @@ writer.book = book
 df.to_excel(excel_writer=writer, sheet_name='sheet3')
 writer.save()'''
 
-# engine='xlsxwriter'
-# engine='openpyxl'
-
-# print(youbike_dict)
 print(pd.DataFrame(youbike_dict))
-
-# append_df_to_excel('youbike_cronjob1.xlsx', pf, sheet_name='Sheet1', startrow=None, truncate_sheet=False)
-
-# export_excel(youbike_dict)
-# wb.close()
 wb.save('youbike_cronjob1.xlsx')
-#wb.save('youbike_cronjob1.xlsx')
